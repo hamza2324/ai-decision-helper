@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Decision Helper — Stop Overthinking, Decide with Clarity</title>
+  <meta name="description" content="Use AI to analyze your toughest decisions. Get clear, emotionally intelligent advice in seconds. Free decision-making tool.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="orb-canvas" aria-hidden="true"></canvas>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">AI Decision Helper</p>
+      <h1>Stop overthinking. Decide with clarity.</h1>
+      <p class="subhead">A premium decision coach that listens, weighs what matters, and helps you move forward with confidence.</p>
+    </header>
+
+    <section class="card input-card" aria-label="Decision input">
+      <div class="field">
+        <label for="situation">Your Situation</label>
+        <div class="textarea-wrap">
+          <textarea id="situation" rows="5" maxlength="700" placeholder="Should I quit my job and freelance?"></textarea>
+          <div class="counter"><span id="charCount">0</span>/700</div>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="optionA">Option A</label>
+          <input id="optionA" type="text" placeholder="Example: Stay in my current role and ask for growth." />
+        </div>
+        <div class="field">
+          <label for="optionB">Option B</label>
+          <input id="optionB" type="text" placeholder="Example: Accept the offer in a new city." />
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="priority">What matters most to you?</label>
+          <select id="priority">
+            <option value="" selected>Choose a focus (optional)</option>
+            <option>Career Growth</option>
+            <option>Financial Security</option>
+            <option>Happiness</option>
+            <option>Relationships</option>
+            <option>Health</option>
+            <option>Personal Freedom</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>How urgent is this decision?</label>
+          <div class="toggle" role="group" aria-label="Urgency level">
+            <button type="button" class="toggle-btn is-active" data-value="Low">Low</button>
+            <button type="button" class="toggle-btn" data-value="Medium">Medium</button>
+            <button type="button" class="toggle-btn" data-value="High">High</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="primary" id="analyzeBtn">
+        <span>Analyze Decision</span>
+        <span class="pulse"></span>
+      </button>
+
+      <div class="error" id="errorBox" role="alert" aria-live="polite">
+        <p id="errorMessage"></p>
+        <button type="button" class="ghost" id="retryBtn">Retry</button>
+      </div>
+    </section>
+
+    <section class="card results-card" id="results" aria-live="polite" hidden>
+      <div class="results-header">
+        <div>
+          <p class="eyebrow">Decision Insight</p>
+          <h2>Your clarity report</h2>
+        </div>
+        <div class="badges">
+          <span class="badge" id="riskBadge">Risk: Medium</span>
+          <span class="badge" id="timeBadge">Timeframe: Both</span>
+          <span class="badge" id="toneBadge">Tone: Balanced</span>
+        </div>
+      </div>
+
+      <div class="score-grid">
+        <article class="score-card" id="cardA">
+          <div class="score-head">
+            <h3 id="labelA">Option A</h3>
+            <span class="score" id="scoreA">0%</span>
+          </div>
+          <div class="bar">
+            <span class="fill" id="barA"></span>
+          </div>
+          <p class="summary" id="summaryA"></p>
+        </article>
+
+        <article class="score-card" id="cardB">
+          <div class="score-head">
+            <h3 id="labelB">Option B</h3>
+            <span class="score" id="scoreB">0%</span>
+          </div>
+          <div class="bar">
+            <span class="fill" id="barB"></span>
+          </div>
+          <p class="summary" id="summaryB"></p>
+        </article>
+      </div>
+
+      <blockquote class="insight" id="insight"></blockquote>
+
+      <div class="action-row">
+        <div>
+          <p class="eyebrow">Your Next Action Step</p>
+          <p class="action" id="actionStep"></p>
+        </div>
+        <div class="actions">
+          <button class="ghost" id="copyBtn">Copy Insight</button>
+          <button class="ghost" id="resetBtn">Start Over</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">Powered by Groq • Built for clarity</footer>
+  </main>
+
+  <div class="loading" id="loading" aria-hidden="true">
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <p>Thinking deeply about your decision...</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
