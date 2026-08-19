@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = "your_groq_api_key_here";
 const MODEL = "llama-3.3-70b-versatile";
 const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
